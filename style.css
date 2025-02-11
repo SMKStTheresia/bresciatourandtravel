@@ -1,0 +1,1235 @@
+/* 
+To Do list : 
+Ganti font untuk muat
+Page 2
+Jangan berantakan ok?
+- william td   
+
+bagi yg liat ini berantakin aja we hehehe ~t
+*/
+
+/* menghilangkan scrollbar */
+::-webkit-scrollbar{
+  width: 0;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+/* Scroll bawah hilang */
+body{
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+/*  */
+::-webkit-scrollbar{
+    width: 0.1;
+}
+
+.mobile-menu{
+  display: none;
+}
+
+/* no text decor for a tag */
+a{
+  text-decoration: none;
+}
+
+/* Start of Navbar */
+.navbar{
+    z-index: 1; /* Priority */
+
+    /* Size of Navbar */
+    width: 100vw;
+    height: 12.5vh;
+
+    /* Background of Navbar */
+    background-color: transparent;
+    position: relative;
+    z-index:99999;
+}
+
+/* Base menu styles for desktop */
+.menu { 
+    position: fixed;
+    left: 50%;
+    top: 7%;
+    z-index: 99999;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: space-evenly;
+    border: transparent;
+    border-radius: 35px;
+    height: 60px;
+    width: 700px;
+    background-color: rgba(74, 129, 46, 255);
+}
+
+/* Base button menu styles */
+.btnmenu {
+    transition: 0.3s ease-in-out;
+    display: block;
+}
+
+/* Mobile menu styles */
+@media only screen and (max-width: 600px) {
+    /* Hide desktop menu */
+    .menu {
+        display: none;
+    }
+
+    /* Hamburger button styles */
+    .hamburger-menu {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 25px;
+        height: 30px;
+        background: rgba(74, 129, 46, 0.95);
+        border-radius: 8px;
+        cursor: pointer;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        padding: 10px;
+    }
+
+    .bar {
+        width: 30px;
+        height: 3px;
+        background: white;
+        transition: 0.3s;
+    }
+
+    /* Mobile menu container */
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: linear-gradient(135deg, rgba(74, 129, 46, 0.98), rgba(54, 71, 57, 0.98));
+        backdrop-filter: blur(10px);
+        transition: 0.4s ease-in-out;
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    /* Show menu when active */
+    .mobile-menu.active {
+        right: 0;
+    }
+
+    /* Hamburger animation */
+    .hamburger-menu.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .hamburger-menu.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-menu.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    /* Menu items styling */
+    .mobile-menu .menu-icon-location {
+        width: 80%;
+        max-width: 250px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    .mobile-menu .menu-icon-location:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateX(10px);
+    }
+
+    .mobile-menu .menu-icon-location i {
+        font-size: 24px;
+        color: white;
+        margin-bottom: 8px;
+    }
+
+    .mobile-menu .menu-icon-location h4 {
+        color: white;
+        font-size: 18px;
+        margin: 0;
+    }
+}
+
+/* Remove any potential conflicts */
+@media only screen and (max-width: 600px) {
+    .fa-bars {
+        display: none !important;
+    }
+
+    #toggler {
+        display: none !important;
+    }
+}
+
+.menu:hover .btnmenu{
+  transform: scale(0.9);
+  opacity: 0.7;
+  color: rgb(163, 163, 163);
+}
+.menu .btnmenu:hover {
+  transform: scale(1.1);
+  opacity: 1;
+  color: #c5c5c5;
+}
+.menu .btnmenu:hover i{
+  transform: scale(1);
+  opacity: 1;
+}
+
+
+.menu .btnmenu:active {
+  transform: scale(0.9);
+  opacity: 1;
+  color: #c5c5c5;
+}
+.menu .btnmenu:active i{
+  transform: scale(0.95);
+  opacity: 1;
+}
+
+
+.menu-icon-location {
+    /* Align items vertically */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    
+    /* spacing between the icon and text */
+    margin-top: 10px;
+}
+
+.menu-icon-location i {
+    /* To center icons and make them slightly transparent */
+    opacity: 0.65;
+    font-size: 17.5px;
+    color: white;
+}
+
+.menu-icon-location h4 {
+    /* Center the text and set color */
+    color: white;
+    margin-top: 5px;  /* Adds space between icon and text */
+    font-size: 16px;  /* Set a proper font size for the text */
+}
+
+/* Image of logo location */
+.logo-location img{
+    /* Size of Image */
+    width: 65px;
+    height: auto;
+
+    /* Position of Image */
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+/* Text of logo location */
+#logo-text{
+    /* Position of Text */
+    margin-left: 90px;
+    margin-top: -67.5px;
+    cursor:  default;
+
+    /* Color and Display of text */
+    color: white;
+}
+
+/* Toggler bro */
+#toggler{
+  display: none;
+}
+.fa-bars{
+  display: none;
+  font-size: 20pt;
+  color: #000000;
+  border-radius: .5rem;
+  padding: .5rem 1.5rem;
+  cursor: pointer;
+  border: .1rem solid rgba(0,0,0,.1);
+  background-color: white;
+}
+
+/* End of Navbar */
+
+
+/* Beginning of Page 1 */
+.container-page1 {
+    position: relative;
+    z-index: 0;
+    background: none; 
+    width: 100vw;
+    height: 85vh;
+    margin-top: -12.5vh;
+    overflow: hidden; 
+}
+
+.container-page1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#1817177a, #00000062),url(gambar/pict.jpg);
+    background-size: cover;
+    filter: brightness(60%); 
+    z-index: -3; 
+}
+
+.text-pg1{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1#header-page1{
+  color: white;
+  position: relative; /* To ensure it's above the background */
+  z-index: 1;
+
+  text-shadow: 4px 4px 10px black; /*To make a shadowy text background*/
+  /* To position text of header */
+  text-align: center;
+
+  /* To resize font size */
+  font-size: 70px;
+}
+
+.hd-p1-hp{
+  display: none;
+}
+
+.text-page1{
+    color: white; 
+    font-family: Caveat, cursive;
+    font-size: 30px; 
+    letter-spacing: 1.5px;
+    text-align: center;
+    font-weight: 200;
+    width: 100%;
+    margin: 1rem 0 2rem 0;
+}
+
+.border-page1 a{
+    /* To position the button */
+    text-align: center;
+
+    /* To resize the button */
+    width: 225px;
+    height: 45px;
+
+    /* Color, shadow and radius of button */
+    color: black;
+    border: none;
+    cursor: pointer;
+    background-color: #67a062;
+    border-radius: 25px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+
+    /* Use flexbox to center the text inside the button */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: center;
+}
+.border-page1 a:hover{
+  background-color: #5d8f59;
+  transform: scale(0.95);
+}
+.border-page1 a:active{
+  transform: scale(0.85);
+}
+#textbutton-page1{
+    /* Remove absolute positioning */
+    position: static; 
+    color: white;
+    font-size: 16px;
+}
+/* end page-1 */
+
+
+
+/* seperator (kertas robekan) */
+.seperator{
+  position: absolute;
+    width: 100vw;
+    height: auto;
+    transform: translate(0, -60px);
+    /* background: url(gambar/robek_kertas.png);
+    background-size: cover; */
+    z-index: 0;
+}
+
+.seperator img{
+  width: 100%;
+  height: 130px;
+  position: absolute;
+}
+/* end seperator */
+
+
+
+/* Halaman 2 */
+.container-page2 {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+  display: flex;
+  gap: 2rem;
+  background-color: #364739;
+}
+
+.content-wrapper {
+  flex: 1;
+  max-width: 500px;
+}
+
+#header-page2 {
+  margin-bottom: 2rem;
+}
+
+#header-page2 h1 {
+  font-size: 2.5rem;
+  color: white;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.content-page2 {
+  margin-bottom: 3rem;
+}
+
+.content-page2 h2 {
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #cfcfcf;
+  line-height: 1.6;
+}
+
+.carousel-section {
+  flex: 1.5;
+  position: relative;
+}
+
+.carousel-container {
+  width: 85vw;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+  background: #f5f5f5;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.image-list {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  transition: transform 0.5s ease;
+}
+
+.card-wrapper {
+  min-width: 300px;
+  height: 400px;
+  perspective: 1000px;
+  margin: 50px 10px;
+  flex-shrink: 0;
+}
+
+.flip-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  cursor: pointer;
+}
+
+.card-wrapper:hover .flip-card {
+  transform: rotateY(180deg) translateX(-15px);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card-front {
+  background: #fff;
+}
+
+.card-back {
+  background: #364739;
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  text-align: center;
+}
+
+.image-item {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scrollbar-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 5px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+
+.scrollbar-thumb {
+  height: 100%;
+  background: #666;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.carousel-controls {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 10;
+  
+}
+
+.control-btn {
+  background: #2c3e50;
+  width: 10vw;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 2px solid white;
+}
+.control-btn:hover {
+  background: #34495e;
+  transform: scale(0.95);
+}
+
+.control-btn:active{
+  transform: scale(0.85);
+}
+
+.location-name {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.location-description {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 1024px) {
+  .container-page2 {
+    flex-direction: column;
+  }
+  
+  .content-wrapper {
+    max-width: 100%;
+  }
+}
+
+/* page-3 ================================================================= */
+
+/* Container styles */
+#container-page3 {
+  width: 100%;
+  background-color: #2d3d30;
+  padding: 2rem 0 6rem;
+  position: relative;
+}
+
+/* Header styles */
+.page3-header {
+  width: 100%;
+  padding: 0 0 6rem 0;
+}
+
+/* Title section */
+.page3-title {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 35rem;
+  height: 20vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #67a062;
+  border-bottom-right-radius: 30px;
+  box-shadow: 1px 1px 0 5px #364739;
+}
+
+.page3-title h1 {
+  font-size: clamp(32px, 5vw, 45px);
+  color: #fff;
+  margin: 0;
+}
+
+.page3-header2 {
+  width: 100%;
+  padding: 0 0 6rem 0;
+}
+
+/* Description section */
+.page3-desc {
+  width: 100%;
+  margin: 6rem 4vw 0 4vw;
+}
+.page3-desc p {
+  width: 100%;
+  margin: auto;
+  font-size: 1.2rem;
+  color: #cfcfcf;
+}
+.page3-header2 .tmb {
+  margin: 1rem 4vw 0 4vw;
+  width: fit-content;
+  background-color: #67a062;
+  padding: 0.7rem 1.5rem;
+  border-radius: 2rem;
+  transition: transform 0.2s ease, background-color 0.4s ease;
+}
+
+.page3-header2 .tmb:hover {
+  transform: scale(0.95);
+  background-color: #5d8f59;
+  cursor: pointer;
+}
+.page3-header2 .tmb:active{
+  transform: scale(0.85);
+}
+.page3-header2 .tmb a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+/* Grid layout */
+.p3-row {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.p3-column {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 0 2rem;
+}
+/* Hidden */
+
+.see-more-container button{
+  top: 70px;
+    position: relative;
+    margin-left: 50%;
+    transform: translate(-50%);
+    /* To resize the button */
+    width: 225px;
+    height: 45px;
+
+    /* Color, shadow and radius of button */
+    color: white;
+    border: none;
+    cursor: pointer;
+    background-color: #67a062;
+    border-radius: 25px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+.see-more-container button:hover{
+    scale: 0.95;
+}
+.see-more-container button:active{
+    scale: 0.85;
+}
+
+.hidden-p3 {
+  margin-top: 2rem;
+  display: none; /* Initially hide the hidden services */
+  display: grid; /* Use grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 0 2rem;
+}
+
+/* Service card styles */
+.p3-service {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.p3-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+
+.p3-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+/* Price tag */
+.p3-price {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #488854;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  z-index: 1;
+}
+
+.p3-price h5 {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Service name */
+.p3-name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #488854;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  border-radius: 0 0 1rem 1rem; /* Changed to only round bottom corners */
+  transform: none; /* Removed translateX since we're using full width */
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1); /* Changed shadow direction */
+}
+
+.p3-name h4 {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+.p3-name h6 {
+  font-size: 0.9rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .page3-title {
+    width: 80vw;
+  }
+  
+  .page3-desc {
+    width: 90%;
+  }
+  
+  .p3-column {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  .p3-service {
+    height: 350px;
+  }
+}
+
+
+
+
+
+/* image gallery css */
+
+.gallery-page{
+  min-height: 125vh;
+  width: 100%;
+  background-color: #29382c;
+}
+.gallery-title h1{
+  text-align: left;
+  margin-left: 2.5vw;
+  font-size: 4vw;
+  color: rgb(152, 255, 152);
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-weight: 200;
+}
+.image-gallery{
+  width: 95%;
+  height: fit-content;
+  padding-bottom: 4rem;
+  margin-right: auto;
+  margin-left: auto;
+  columns: 350px;
+}
+.image-gallery img{
+  margin-bottom: 0.5rem;
+  width: 100%;
+  -webkit-box-shadow: 0 0 20px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0 0 20px 0px rgba(0,0,0,0.75);
+  box-shadow: 0 0 20px 0px rgba(0,0,0,0.75);
+  border-radius: 0.15rem;
+  transition: .4s ease;
+  box-sizing: border-box;
+  &:hover{
+    transform: scale(1.01);
+    box-shadow: 0 0 5px #67a062, 0 0 15px #488854;
+  }
+}
+
+.location{
+  background-color: #364739;
+}
+
+/* Gambar Gallery  */
+
+
+
+
+/* Footer*/
+.footer {
+  background-color: #364739;
+  color: #fff;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+}
+
+.footer .sosmed {
+  flex-basis: 33.33%;
+  padding-top: 20px;
+  padding-bottom: 20x;
+  justify-content: center; 
+  font-size: 12px;
+  font: 1em sans-serif;
+}
+
+.footer h5 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer p {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center; 
+}
+
+.footer li {
+  margin-bottom: 10px;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #ccc;
+}
+
+.footer .social-media {
+  display: flex;
+  justify-content: center; 
+}
+
+.footer .social-media li {
+  margin-right: 20px;
+}
+
+.footer .social-media a {
+  font-size: 12px;
+  letter-spacing: 4.4px; /* atur jarak huruf nama sosmet */
+}
+
+.footer .quick-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.footer .quick-links li {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.footer .copyright {
+  color: #fff;
+}
+
+
+
+
+/* Responsive HP gusy */
+@media only screen and (max-width: 600px) {
+  /* Navbar adjustments */
+  .logo-location {
+    height: 80px;
+  }
+  
+  #logo-text {
+    font-size: 15px;
+    margin-left: 65px;
+    margin-top: -50px;
+  }
+  
+  .logo-location img {
+    width: 50px;
+    height: auto;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
+  /* Page 1 adjustments */
+  .container-page1 {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .text-pg1 {
+    margin-top: 0;
+    padding: 0 20px;
+  }
+
+  h1#header-page1 {
+    display: none;
+  }
+
+  .hd-p1-hp {
+    display: block;
+    font-size: clamp(32px, 8vw, 40px);
+    text-align: center;
+    color: white;
+    text-shadow: 4px 4px 10px black;
+  }
+
+  .text-page1 {
+    font-size: clamp(18px, 5vw, 20px);
+  }
+
+  /* Page 2 adjustments */
+  .container-page2 {
+    padding: 3rem 1.5rem;
+  }
+
+  #header-page2 h1 {
+    font-size: clamp(24px, 6vw, 30px);
+  }
+
+  .content-page2 h2 {
+    font-size: 16px;
+  }
+
+  /* Page 3 adjustments */
+  .page3-title {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80%;
+    height: 12vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #67a062;
+    border-bottom-right-radius: 30px;
+    box-shadow: 1px 1px 0 5px #364739;
+  }
+
+  .page3-title h1 {
+    font-size: clamp(24px, 6vw, 32px);
+    margin: 0;
+    padding: 0 1rem;
+  }
+
+  .page3-header {
+    width: 100%;
+    padding: 0 0 4rem 0;
+  }
+
+  .page3-header2 {
+    padding-top: 2.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .page3-desc {
+    margin: 1rem 4vw;
+    width: auto;
+    padding: 0 15px;
+  }
+
+  .page3-desc p {
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Gallery adjustments */
+  .gallery-title h1 {
+    font-size: clamp(24px, 6vw, 32px);
+    margin-left: 5vw;
+    text-align: center;
+  }
+
+  .image-gallery {
+    columns: 2;
+    column-gap: 10px;
+    padding: 10px;
+  }
+
+  .image-gallery img {
+    margin-bottom: 10px;
+  }
+
+  /* Footer adjustments */
+  .footer .social-media {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .footer .social-media a {
+    font-size: 14px;
+  }
+
+  .footer .quick-links {
+    flex-wrap: wrap;
+    gap: 1px;
+    justify-content: center;
+  }
+
+  .footer .quick-links li {
+    margin: 5px;
+  }
+
+  /* Location map adjustment */
+  .location iframe {
+    width: 100%;
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer li {
+    margin-bottom: 50px;
+  }
+  .footer .social-media {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+  }
+  .footer .social-media a {
+    font-size: 9pt;
+  }
+  .sosmed{
+    padding: 0px;
+  }
+  }
+
+
+@media (max-width: 480px) {
+  .footer .col-md-4 {
+      flex-basis: 100%;
+  }
+}
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    padding: 15px;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 100000;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+/* Mobile Menu Styles */
+@media only screen and (max-width: 600px) {
+    .hamburger-menu {
+        display: block;
+        background-color: rgba(74, 129, 46, 0.95);
+        border-radius: 8px;
+    }
+
+    .menu {
+        position: fixed;
+        left: auto;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        transform: none;
+        background: linear-gradient(135deg, rgba(74, 129, 46, 0.97), rgba(54, 71, 57, 0.97));
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0;
+        transition: 0.4s ease;
+        backdrop-filter: blur(10px);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+        z-index: 99999;
+    }
+
+    .menu.active {
+        right: 0;
+        display: flex;
+    }
+
+    .menu .btnmenu {
+        margin: 20px 0;
+        opacity: 0;
+        transform: translateX(100px);
+        transition: all 0.4s ease;
+        display: block;
+    }
+
+    .menu.active .btnmenu {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .btnmenu, .menu-icon-location {
+        display: block !important;
+    }
+
+    .menu:hover .btnmenu {
+        transform: none;
+        opacity: 1;
+        color: inherit;
+    }
+
+    .menu .menu-icon-location {
+        margin: 15px 0;
+        width: 200px;
+        padding: 15px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .menu .menu-icon-location:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateX(10px);
+    }
+
+    .menu .menu-icon-location i {
+        font-size: 24px;
+        margin-bottom: 8px;
+        opacity: 1;
+    }
+
+    .menu .menu-icon-location h4 {
+        font-size: 18px;
+        font-weight: 500;
+        color: white;
+    }
+
+    .hamburger-menu .bar {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 5px 0;
+        transition: 0.4s;
+    }
+
+    .hamburger-menu.active .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+        background-color: white;
+    }
+
+    .hamburger-menu.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-menu.active .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+        background-color: white;
+    }
+}
